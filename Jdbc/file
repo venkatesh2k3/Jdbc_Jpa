@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <title>CSS Box Model</title>
+    <style>
+        .main {  
+         
+p {outline-color:red;}
+p.dotted {outline-style: dotted;}
+p.dashed {outline-style: dashed;}
+p.solid {outline-style: solid;}
+p.double {outline-style: double;}
+            width: 700px;
+            border: 5px solid black;
+        }
+
+        .box1 {
+        padding: 200px;
+            background-color: yellow;
+            border: 5px solid darkgreen;
+            margin: 100px;
+            
+        
+         
+            padding: 150px;
+            background-color: pink;
+            border: 5px solid red;
+            margin: 80px;
+            
+        
+            padding: 100px;
+            background-color: blue;
+            border: 5px solid pink;
+            margin: 60px;
+        
+        
+          
+            padding: 50px;
+            background-color: violet;
+            border: 5px solid orange;
+            margin: 40px;
+            }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box1"></div>
+        	
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validation Form</title>
+    <script>
+    function validateForm(event) {
+    var element = event.target;
+    var fieldName = element.getAttribute('name');
+    var fieldValue = element.value.trim();
+    
+    if (fieldValue === '') {
+        event.preventDefault();
+        alert('Please enter ' + fieldName + '.');
+        element.focus();
+        return false;
+    }
+}
+
+    </script>
+</head>
+<body>
+    <form name="myform" method="post" action="" onsubmit="return validateForm(event)">
+        <label>
+            First name: <input type="text" name="firstName" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Last name: <input type="text" name="lastName" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Username: <input type="text" name="username" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Password: <input type="password" name="password" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Confirm Password: <input type="password" name="confirmpassword" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Gender:
+            <br><br>
+            <input type="radio" name="gender" value="male" required> Male<br><br>
+            <input type="radio" name="gender" value="female" required> Female<br><br>
+            Email: <input type="email" name="email" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Phno: <input type="text" name="num" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Date of Birth: <input type="date" name="birthDate" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            Address: <br /><textarea name="address" cols="30" rows="3" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"></textarea><br><br>
+            Languages known:
+            <br><br>
+            <input type="checkbox" name="lang">C++<br><br>
+            <input type="checkbox" name="lang">Java<br><br>
+            <input type="checkbox" name="lang">Python<br><br>
+            <input type="checkbox" name="lang">JDBC<br><br>
+            District:
+            <select name="district" id="district" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')">
+                <option selected="" value="Default">(Please select a District)</option>
+                <option value="ntr">Ntr</option>
+                <option value="krishna">Krishna</option>
+                <option value="vizianagaram">Vizianagaram</option>
+                <option value="kurnool">Kurnool</option>
+            </select>
+            <br><br>
+            Pin: <input type="text" name="pin" onkeydown="if(event.keyCode === 9) alert('Press tab to move to the next field.')"><br><br>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </label>
+    </form>
+</body>
+</html>
+

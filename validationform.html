@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>validationform</title>
+<script>
+function validateform(){  
+
+    var firstName = document.myform.firstName.value; 
+    var lastName = document.myform.lastName.value; 
+    var username = document.myform.username.value; 
+    var password = document.myform.password.value; 
+    var confirmPassword = document.myform.confirmpassword.value; 
+    var gender = document.myform.gender.value; 
+    var email = document.myform.email.value; 
+    var phno = document.myform.num.value;
+    var birthDate = document.myform.birthDate.value;
+    var address = document.myform.address.value;
+    var lang = document.getElementsByName('lang');
+    var district = document.myform.district.value;
+    var pin = document.myform.pin.value;
+
+    var re = /^[a-zA-Z]*$/;
+    
+    if (firstName == "" || !re.test(firstName)) {
+        alert("Please enter First Name with only characters");
+        return false;
+    } else if (lastName == "" || !re.test(lastName)) {
+        alert("Please enter Last Name with only characters");
+        return false;
+    } else if (username == "" || /^\d*$/.test(username) || /\s/.test(username)) {
+        alert("Please enter a valid username without any numbers or spaces");
+        return false;
+    } else if (password == "") {
+        alert("Please enter your password");
+        return false;
+    } else if (password.length < 8 || password.length > 12) {
+        alert("Password length should be between 8 and 12 characters");
+        return false;
+    } else if (!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/.test(password))) {
+        alert("The password should contain at least one capital letter, one special character, and a digit");
+        return false;
+    } else if (confirmPassword != password || confirmPassword == "") {
+        alert("Enter Confirm Password or Password doesn't match");
+        return false;
+    } else if (email == "" || !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+    } else if (phno.length !== 10 || !/^[6-9]\d{9}$/.test(phno)) {
+        alert("Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9");
+        return false;
+    } else if (birthDate == "") {
+        alert("Please enter your date of birth");
+        return false;
+    } else if (address == "") {
+        alert("Please enter your address");
+        return false;
+    } else {
+        var isChecked = false;
+        for (var i = 0; i < lang.length; i++) {
+            if (lang[i].checked) {
+                isChecked = true;
+                break;
+            }
+        }
+        if (!isChecked) {
+            alert("Please select at least one language");
+            return false;
+        }
+    }
+    
+    if (district == "Default") {
+        alert("Please select your District");
+        return false;
+    } else if (!/^\d+$/.test(pin)) {
+        alert("ZIP Code should contain only numeric digits");
+        return false;
+    }
+    var welcomeMessage = "Welcome, " + firstName + " " + lastName + "!";
+            localStorage.setItem("welcomeMessage", welcomeMessage);
+            return true ;
+        }
+
+</script>
+</head>
+<body>
+<form name="myform" method="post" action="hello world.html" onsubmit="return validateform()"> 
+<label>
+    First name: <input type="text" name="firstName"><br><br>
+    Last name: <input type="text" name="lastName"><br><br>
+    Username: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    Confirm Password: <input type="password" name="confirmpassword"><br><br>
+    Gender:<br><br>
+    <input type="radio" name="gender" value="male" required>Male<br><br>
+    <input type="radio" name="gender" value="female" required>Female<br><br>
+    Email: <input type="email" name="email"><br><br>
+    Phno: <input type="text" name="num"><br><br>
+    Date of Birth: <input type="date" name="birthDate"><br><br>
+    Address:<br /><textarea name="address" cols="30" rows="3"></textarea><br><br>
+    Languages known:<br><br>
+    <input type="checkbox" name="lang" value="C++">C++<br><br>
+    <input type="checkbox" name="lang" value="Java">Java<br><br>
+    <input type="checkbox" name="lang" value="Python">Python<br><br>
+    <input type="checkbox" name="lang" value="JDBC">JDBC<br><br>
+    District:
+    <select name="district" id="district">
+        <option selected="" value="Default">(Please select a District)</option>
+        <option value="ntr">Ntr</option>
+        <option value="krishna">Krishna</option>
+        <option value="vizianagaram">Vizianagaram</option>
+        <option value="kurnool">Kurnool</option>
+    </select><br><br>
+    Pin: <input type="text" name="pin"><br><br>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</label>
+</form>
+</body>
+</html>
